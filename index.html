@@ -5,102 +5,125 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Магазин скоро откроется</title>
 <style>
+  /* Фон с зелёным градиентом и динамическим движением */
   body {
     margin: 0;
     height: 100vh;
-    background: linear-gradient(135deg, #1a1a1a, #440000);
+    background: linear-gradient(135deg, #003300, #00ff00);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ff4444;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow: hidden;
-    animation: bgPulse 6s ease-in-out infinite;
+    perspective: 1000px;
   }
 
-  /* Анимация фона */
-  @keyframes bgPulse {
-    0%, 100% {
-      background: linear-gradient(135deg, #1a1a1a, #440000);
-    }
-    50% {
-      background: linear-gradient(135deg, #2a0a0a, #ff0000);
-    }
-  }
-
+  /* Основной контейнер */
   .container {
     position: relative;
     max-width: 600px;
-    padding: 40px 50px;
-    text-align: center;
-    background: rgba(0,0,0,0.7);
-    border-radius: 25px;
+    padding: 50px 60px;
+    background: #001900;
+    border-radius: 30px;
     box-shadow:
-      0 0 20px 5px rgba(255, 0, 0, 0.7),
-      inset 0 0 20px 3px rgba(255, 68, 68, 0.9);
-    animation: fadeIn 2s ease forwards, pulseText 3s ease-in-out infinite;
-    opacity: 0;
-    overflow: hidden;
+      0 0 20px #00ff00,
+      inset 0 0 40px #00ff00,
+      0 0 60px #00ff00aa;
+    color: #00ff00;
+    text-align: center;
+    transform-style: preserve-3d;
+    animation: pulseGlow 3s ease-in-out infinite;
   }
 
-  /* Пульсация текста */
-  @keyframes pulseText {
+  /* 3D текст с тенями и светом */
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    color: #00ff00;
+    text-shadow:
+      0 0 10px #00ff00,
+      0 0 20px #00ff00,
+      0 0 40px #00ff00,
+      0 0 80px #00ff00,
+      0 0 90px #00ff00;
+    transform: translateZ(30px);
+    animation: tilt 5s ease-in-out infinite alternate;
+  }
+
+  /* Абзацы с неоновым свечением */
+  p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #88ff88cc;
+    margin-bottom: 20px;
+    text-shadow:
+      0 0 6px #00ff00aa,
+      0 0 10px #00ff00bb;
+    transform: translateZ(20px);
+  }
+
+  /* Пульсация свечения контейнера */
+  @keyframes pulseGlow {
     0%, 100% {
-      text-shadow: 0 0 20px #ff4444;
+      box-shadow:
+        0 0 20px #00ff00,
+        inset 0 0 40px #00ff00,
+        0 0 60px #00ff00aa;
     }
     50% {
-      text-shadow: 0 0 40px #ff0000;
+      box-shadow:
+        0 0 30px #00ff00,
+        inset 0 0 60px #00ff00,
+        0 0 90px #00ff00cc;
     }
   }
 
-  h1 {
-    font-size: 3.2rem;
-    margin-bottom: 25px;
-    color: #ff4444;
+  /* Наклон текста в 3D */
+  @keyframes tilt {
+    0% { transform: translateZ(30px) rotateY(-10deg) rotateX(5deg); }
+    100% { transform: translateZ(30px) rotateY(10deg) rotateX(-5deg); }
   }
 
-  p {
-    font-size: 1.3rem;
-    line-height: 1.6;
-    color: #ff9999;
-    margin-bottom: 20px;
-  }
-
-  /* Анимация появления */
-  @keyframes fadeIn {
-    to {opacity: 1;}
-  }
-
-  /* Светящиеся линии сверху и снизу */
+  /* Анимированные неоновые линии сверху и снизу */
   .container::before, .container::after {
-    content: '';
+    content: "";
     position: absolute;
-    left: 10px;
-    right: 10px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #ff0000, transparent);
-    animation: lineMove 3s linear infinite;
-    border-radius: 5px;
+    left: 15px;
+    right: 15px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #00ff00, transparent);
+    border-radius: 10px;
+    animation: lineMove 4s linear infinite;
   }
   .container::before {
-    top: 5px;
+    top: 8px;
   }
   .container::after {
-    bottom: 5px;
-    animation-delay: 1.5s;
+    bottom: 8px;
+    animation-delay: 2s;
   }
 
-  /* Движение светящейся линии */
+  /* Движение неоновой линии */
   @keyframes lineMove {
     0% {background-position: 0 0;}
     100% {background-position: 200% 0;}
+  }
+
+  /* Анимация мягкого масштабирования всей страницы */
+  @keyframes pagePulse {
+    0%, 100% {transform: scale(1);}
+    50% {transform: scale(1.02);}
+  }
+
+  body {
+    animation: pagePulse 8s ease-in-out infinite;
   }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <h1>Извините, магазин пока не открылся</h1>
+  <h1>Магазин скоро откроется</h1>
   <p>В ближайшее время мы запустим магазин с интересными товарами,<br>которые вы видели на нашем канале TikTok.</p>
   <p>Подписывайтесь, чтобы следить за обновлениями и не пропустить запуск!</p>
   <p>Просим прощения за ожидание и благодарим за понимание.</p>
