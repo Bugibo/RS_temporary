@@ -5,129 +5,89 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Магазин скоро откроется</title>
 <style>
-  /* Фон с зелёным градиентом и динамическим движением */
   body {
     margin: 0;
     height: 100vh;
-    background: linear-gradient(135deg, #003300, #00ff00);
+    background-color: #0a0f08;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden;
-    perspective: 1000px;
-  }
-
-  /* Основной контейнер */
-  .container {
-    position: relative;
-    max-width: 600px;
-    padding: 50px 60px;
-    background: #001900;
-    border-radius: 30px;
-    box-shadow:
-      0 0 20px #00ff00,
-      inset 0 0 40px #00ff00,
-      0 0 60px #00ff00aa;
-    color: #00ff00;
+    color: #7fba00;
     text-align: center;
-    transform-style: preserve-3d;
-    animation: pulseGlow 3s ease-in-out infinite;
+    padding: 20px;
   }
 
-  /* 3D текст с тенями и светом */
+  .container {
+    max-width: 600px;
+    padding: 40px 50px;
+    background: #12240f;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #36590a80;
+    animation: pulseShadow 4s ease-in-out infinite;
+  }
+
+  h1, p {
+    opacity: 0;
+    animation: fadeInUp 1s forwards;
+  }
+
   h1 {
-    font-size: 3.5rem;
-    margin-bottom: 25px;
-    color: #00ff00;
-    text-shadow:
-      0 0 10px #00ff00,
-      0 0 20px #00ff00,
-      0 0 40px #00ff00,
-      0 0 80px #00ff00,
-      0 0 90px #00ff00;
-    transform: translateZ(30px);
-    animation: tilt 5s ease-in-out infinite alternate;
-  }
-
-  /* Абзацы с неоновым свечением */
-  p {
-    font-size: 1.4rem;
-    line-height: 1.6;
-    color: #88ff88cc;
+    font-size: 3rem;
     margin-bottom: 20px;
-    text-shadow:
-      0 0 6px #00ff00aa,
-      0 0 10px #00ff00bb;
-    transform: translateZ(20px);
+    text-shadow: 0 0 8px #7fba00aa;
+    animation-delay: 0.3s;
   }
 
-  /* Пульсация свечения контейнера */
-  @keyframes pulseGlow {
+  p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #9bd73a;
+    margin-bottom: 15px;
+    text-shadow: 0 0 4px #7fba0077;
+  }
+
+  /* Задаём задержку для каждого параграфа */
+  p:nth-of-type(1) {
+    animation-delay: 0.8s;
+  }
+  p:nth-of-type(2) {
+    animation-delay: 1.3s;
+  }
+  p:nth-of-type(3) {
+    animation-delay: 1.8s;
+  }
+
+  @keyframes pulseShadow {
     0%, 100% {
-      box-shadow:
-        0 0 20px #00ff00,
-        inset 0 0 40px #00ff00,
-        0 0 60px #00ff00aa;
+      box-shadow: 0 0 20px #36590a80;
     }
     50% {
-      box-shadow:
-        0 0 30px #00ff00,
-        inset 0 0 60px #00ff00,
-        0 0 90px #00ff00cc;
+      box-shadow: 0 0 30px #a4d22fbb;
     }
   }
 
-  /* Наклон текста в 3D */
-  @keyframes tilt {
-    0% { transform: translateZ(30px) rotateY(-10deg) rotateX(5deg); }
-    100% { transform: translateZ(30px) rotateY(10deg) rotateX(-5deg); }
-  }
-
-  /* Анимированные неоновые линии сверху и снизу */
-  .container::before, .container::after {
-    content: "";
-    position: absolute;
-    left: 15px;
-    right: 15px;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, #00ff00, transparent);
-    border-radius: 10px;
-    animation: lineMove 4s linear infinite;
-  }
-  .container::before {
-    top: 8px;
-  }
-  .container::after {
-    bottom: 8px;
-    animation-delay: 2s;
-  }
-
-  /* Движение неоновой линии */
-  @keyframes lineMove {
-    0% {background-position: 0 0;}
-    100% {background-position: 200% 0;}
-  }
-
-  /* Анимация мягкого масштабирования всей страницы */
-  @keyframes pagePulse {
-    0%, 100% {transform: scale(1);}
-    50% {transform: scale(1.02);}
-  }
-
-  body {
-    animation: pagePulse 8s ease-in-out infinite;
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
 </head>
 <body>
 
-<div class="container">
-  <h1>Магазин скоро откроется</h1>
-  <p>В ближайшее время мы запустим магазин с интересными товарами,<br>которые вы видели на нашем канале TikTok.</p>
-  <p>Подписывайтесь, чтобы следить за обновлениями и не пропустить запуск!</p>
-  <p>Просим прощения за ожидание и благодарим за понимание.</p>
-</div>
+  <div class="container">
+    <h1>Магазин скоро откроется</h1>
+    <p>В ближайшее время мы запустим магазин с интересными товарами,</p>
+    <p>которые вы видели на нашем канале TikTok.</p>
+    <p>Подписывайтесь, чтобы следить за обновлениями и не пропустить запуск!</p>
+    <p>Просим прощения за ожидание и благодарим за понимание.</p>
+  </div>
 
 </body>
 </html>
